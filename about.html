@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABOUT | MONICA ERAN NONAN — Computer Engineering Portfolio</title>
+  <meta name="description" content="Profile, engineering philosophy, and work experience & leadership timeline of Monica Eran Nonan, 4th-year Computer Engineering student at ICCT Colleges." />
+  <!-- Google Fonts: Cormorant Garamond, Playfair Display, Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="about-page" data-active-page="about">
+  <!-- Subtle Ambient Technical Grid Overlay -->
+  <div class="ambient-grain" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       1. REUSABLE GLOBAL HEADER / NAVBAR (Loaded from components/header.html)
+       ======================================================================== -->
+  <div id="header-placeholder" data-component="components/header.html"></div>
+
+  <main>
+    <!-- ======================================================================
+         2. PROFILE & PHILOSOPHY SECTION
+         Left Column: Floating Framed Profile Image (IMG_20230607_165233_933(1).jpg)
+         Right Column:
+         - Overline: '01 // PROFILE & PHILOSOPHY'
+         - Main Heading: 'ENGINEERING MEETS INNOVATION'
+         - Body Paragraph
+         - Link: '— ABOUT ME'
+         Background: Full-width auto-playing looping black-and-white breadboard
+         circuit & 7-segment digital counter video with dark semi-transparent overlay.
+         ====================================================================== -->
+    <section class="about-section" id="about" aria-labelledby="aboutHeading">
+      <!-- Full-Width Auto-Playing Looping Breadboard & 7-Segment Counter Video Background -->
+      <div class="about-video-bg" aria-hidden="true">
+        <video
+          id="aboutBreadboardVideo"
+          class="about-bg-video"
+          autoplay
+          loop
+          muted
+          playsinline
+          poster="assets/breadboard-bw.png"
+        ></video>
+        <canvas id="aboutBreadboardCanvas" class="about-bg-canvas"></canvas>
+        <!-- Dark Semi-Transparent Overlay (Dark Tint) for High Text Legibility -->
+        <div class="about-dark-overlay"></div>
+      </div>
+
+      <div class="container">
+        <div class="about-split-layout">
+          <!-- Left Column: Floating Framed Profile Image -->
+          <div class="about-profile-column">
+            <div class="about-profile-frame">
+              <img
+                src="assets/IMG_20230607_165233_933(1).jpg"
+                alt="Monica Eran Nonan — 4th-Year Computer Engineering Student"
+                class="about-profile-img"
+              />
+            </div>
+          </div>
+
+          <!-- Right Column: Profile & Philosophy Text Content -->
+          <div class="about-content-left about-content-right">
+            <span class="section-eyebrow">01 // PROFILE &amp; PHILOSOPHY</span>
+            <h1 class="about-heading" id="aboutHeading">ENGINEERING MEETS INNOVATION</h1>
+            <p class="about-paragraph">
+              I'm a 4th-year Computer Engineering student at ICCT Colleges focused on software design, control systems, and scalable tech solutions. My work blends foundational engineering principles with modern development tools to build efficient and intentional systems.
+            </p>
+            <a href="#expertise" class="dash-cta-link js-open-about-modal">— ABOUT ME</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. WORK EXPERIENCE & LEADERSHIP TIMELINE SECTION
+         Dark, low-opacity image of a printed circuit board (PCB) featuring a
+         microchip, overlaid with a faint grid and left-aligned vertical timeline.
+         ====================================================================== -->
+    <section class="expertise-section" id="expertise" aria-labelledby="expertiseSectionLabel">
+      <div class="container">
+        <div class="expertise-content-left">
+          <span class="section-eyebrow" id="expertiseSectionLabel">03 // EXPERIENCE &amp; LEADERSHIP</span>
+          <ul class="expertise-list">
+            <li class="expertise-item">
+              <h2 class="expertise-title">— 2023 // Durawood Realty &amp; Development Corp.</h2>
+              <p class="expertise-desc">Intern Draftsman (Engineering Dept.) - Utilized AutoCAD and SketchUp for engineering drafting tasks.</p>
+            </li>
+            <li class="expertise-item">
+              <h2 class="expertise-title">— 2025 // President</h2>
+              <p class="expertise-desc">ICCT Engineering Society</p>
+            </li>
+            <li class="expertise-item">
+              <h2 class="expertise-title">— 2025 // Public Relations Officer</h2>
+              <p class="expertise-desc">ICCT Engineering Society</p>
+            </li>
+            <li class="expertise-item">
+              <h2 class="expertise-title">— 2024 // Communication Research</h2>
+              <p class="expertise-desc">ICCT Engineering Society</p>
+            </li>
+            <li class="expertise-item">
+              <h2 class="expertise-title">— 2023 // 1st-Year Representative</h2>
+              <p class="expertise-desc">ICCT Engineering Society</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. CALL TO ACTION (CTA) / CONTACT SECTION
+         ====================================================================== -->
+    <section class="cta-section" id="contact" aria-labelledby="ctaHeading">
+      <div class="container">
+        <div class="cta-content-center">
+          <span class="section-eyebrow">04 // INITIATE COLLABORATION</span>
+          <h2 class="cta-heading" id="ctaHeading">BUILD SOMETHING INNOVATIVE</h2>
+          <p class="cta-subheading">
+            Available for tech collaborations, software design, and engineering projects.
+          </p>
+          <a href="mailto:monicaerannonan@gmail.com" class="dash-cta-link js-open-contact">— Get in Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       5. REUSABLE GLOBAL FOOTER & MODAL (Loaded from components/footer.html)
+       ======================================================================== -->
+  <div id="footer-placeholder" data-component="components/footer.html"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
