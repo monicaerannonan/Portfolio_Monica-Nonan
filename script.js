@@ -35,6 +35,7 @@
     <nav class="header-nav" aria-label="Primary Navigation">
       <a href="about.html" class="nav-link" data-page="about">ABOUT</a>
       <a href="projects.html" class="nav-link" data-page="projects">PROJECTS</a>
+      <a href="skills.html" class="nav-link" data-page="skills">SKILLS</a>
       <a href="#contact" class="nav-link" data-page="contact">CONTACT</a>
     </nav>
 
@@ -89,6 +90,8 @@
       <a href="about.html">About</a>
       <span class="footer-pipe" aria-hidden="true">|</span>
       <a href="projects.html">Projects</a>
+      <span class="footer-pipe" aria-hidden="true">|</span>
+      <a href="skills.html">Skills</a>
       <span class="footer-pipe" aria-hidden="true">|</span>
       <a href="#contact">Contact</a>
     </nav>
@@ -299,7 +302,7 @@
     // Subtle dark AutoCAD blueprint grid background + WCS coordinate axes
     function drawCadGrid(w, h) {
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = 'rgba(8, 10, 14, 0.62)';
+      ctx.fillStyle = 'rgba(6, 20, 13, 0.70)';
       ctx.fillRect(0, 0, w, h);
 
       // Minor grid lines (16px)
@@ -1163,8 +1166,8 @@
       const w = rect.width;
       const h = rect.height;
 
-      // 1. Base Layer: Monochrome Breadboard Macro Photo or Deep Carbon Base
-      bbCtx.fillStyle = '#090a0d';
+      // 1. Base Layer: Monochrome Breadboard Macro Photo or Deep Evergreen Base
+      bbCtx.fillStyle = '#06140d';
       bbCtx.fillRect(0, 0, w, h);
 
       if (bgPhotoLoaded) {
@@ -1203,7 +1206,7 @@
       bbCtx.save();
 
       // Solderless Breadboard Base Plate
-      bbCtx.fillStyle = 'rgba(18, 20, 25, 0.78)';
+      bbCtx.fillStyle = 'rgba(15, 48, 33, 0.78)';
       bbCtx.strokeStyle = 'rgba(255, 255, 255, 0.14)';
       bbCtx.lineWidth = 1;
       bbCtx.fillRect(boardLeft, boardTop, boardWidth, boardHeight);
@@ -1224,7 +1227,7 @@
 
       // Central Breadboard Divider Trench
       const trenchY = boardTop + boardHeight * 0.5;
-      bbCtx.fillStyle = 'rgba(6, 7, 10, 0.88)';
+      bbCtx.fillStyle = 'rgba(6, 20, 13, 0.88)';
       bbCtx.fillRect(boardLeft + 16, trenchY - 12, boardWidth - 32, 24);
 
       // Breadboard Tie-Point Holes Matrix
@@ -1326,7 +1329,7 @@
       }
 
       // 7-Segment Display Housing
-      bbCtx.fillStyle = '#07080b';
+      bbCtx.fillStyle = '#06140d';
       bbCtx.strokeStyle = 'rgba(255, 255, 255, 0.42)';
       bbCtx.lineWidth = 1.6;
       bbCtx.fillRect(segModuleX, segModuleY, segModuleW, segModuleH);
@@ -1379,5 +1382,219 @@
 
     requestAnimationFrame(renderBreadboardVideo);
   }
+
+  /* ==========================================================================
+     6. CONTINUOUS PROJECT CARD FUNCTIONAL DASHBOARD ANIMATIONS
+        Continuous, looping live telemetry updates for:
+        - 7-Segment Display counter (00 to 99 loop with BCD & bus lines)
+        - SpO2 Arduino fluctuating oxygen (98% <-> 99%) & BPM
+        - Power Supply HUD fluctuating voltage (12.0V <-> 11.9V)
+        - Spirometer volume telemetry
+     ========================================================================== */
+  function initProjectCardAnimations() {
+    // 1. Dual 7-Segment Live Counter (00 - 99 Continuous Loop)
+    const sevenSegTens = document.getElementById('sevenSegTens');
+    const sevenSegOnes = document.getElementById('sevenSegOnes');
+    const liveCounterNumber = document.getElementById('liveCounterNumber');
+
+    if (sevenSegTens && sevenSegOnes) {
+      const SEVEN_SEG_TABLE = [
+        [1, 1, 1, 1, 1, 1, 0], // 0
+        [0, 1, 1, 0, 0, 0, 0], // 1
+        [1, 1, 0, 1, 1, 0, 1], // 2
+        [1, 1, 1, 1, 0, 0, 1], // 3
+        [0, 1, 1, 0, 0, 1, 1], // 4
+        [1, 0, 1, 1, 0, 1, 1], // 5
+        [1, 0, 1, 1, 1, 1, 1], // 6
+        [1, 1, 1, 0, 0, 0, 0], // 7
+        [1, 1, 1, 1, 1, 1, 1], // 8
+        [1, 1, 1, 1, 0, 1, 1]  // 9
+      ];
+
+      const segLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+      const tensEls = segLetters.map((letter) => document.getElementById(`tens_${letter}`));
+      const onesEls = segLetters.map((letter) => document.getElementById(`ones_${letter}`));
+      const bcdPins = [
+        document.getElementById('bcdBitA0'),
+        document.getElementById('bcdBitA1'),
+        document.getElementById('bcdBitA2'),
+        document.getElementById('bcdBitA3')
+      ];
+      const busLines = segLetters.map((letter) => document.getElementById(`segBusLine_${letter}`));
+
+      let counterValue = 0;
+
+      function updateSevenSegmentDisplay() {
+        const tens = Math.floor(counterValue / 10);
+        const ones = counterValue % 10;
+
+        const tensCode = SEVEN_SEG_TABLE[tens] || SEVEN_SEG_TABLE[0];
+        const onesCode = SEVEN_SEG_TABLE[ones] || SEVEN_SEG_TABLE[0];
+
+        // Update Tens digit segments
+        tensEls.forEach((el, idx) => {
+          if (el) {
+            el.classList.toggle('is-lit', tensCode[idx] === 1);
+          }
+        });
+
+        // Update Ones digit segments
+        onesEls.forEach((el, idx) => {
+          if (el) {
+            el.classList.toggle('is-lit', onesCode[idx] === 1);
+          }
+        });
+
+        // Update Text Counter Display
+        if (liveCounterNumber) {
+          liveCounterNumber.textContent = String(counterValue).padStart(2, '0');
+        }
+
+        // Update BCD inputs for the ones digit (A0 = bit0, A1 = bit1, A2 = bit2, A3 = bit3)
+        bcdPins.forEach((pin, idx) => {
+          if (pin) {
+            const isBitHigh = (ones & (1 << idx)) !== 0;
+            pin.classList.toggle('is-active', isBitHigh);
+          }
+        });
+
+        // Update Segment Bus Lines (highlighting active lines corresponding to ones digit)
+        busLines.forEach((line, idx) => {
+          if (line) {
+            line.classList.toggle('is-active', onesCode[idx] === 1);
+          }
+        });
+
+        counterValue = (counterValue + 1) % 100;
+      }
+
+      // Initial update and set interval (~625ms for ~1.6Hz clock)
+      updateSevenSegmentDisplay();
+      setInterval(updateSevenSegmentDisplay, 625);
+    }
+
+    // 2. SPO2 Fluctuating Numbers (98% <-> 99%) & Heart Rate Fluctuations
+    const spo2Els = document.querySelectorAll('.js-fluctuate-spo2');
+    const bpmEls = document.querySelectorAll('.js-fluctuate-bpm');
+
+    if (spo2Els.length > 0 || bpmEls.length > 0) {
+      const spo2Values = ['SpO2: 98%', 'SpO2: 99%', 'SpO2: 98%', 'SpO2: 99%', 'SpO2: 97%', 'SpO2: 99%'];
+      const bpmValues = ['76 BPM', '77 BPM', '75 BPM', '78 BPM', '76 BPM', '77 BPM'];
+      let spo2Idx = 0;
+
+      setInterval(() => {
+        spo2Idx = (spo2Idx + 1) % spo2Values.length;
+        const currentSpo2 = spo2Values[spo2Idx];
+        const currentBpm = bpmValues[spo2Idx];
+
+        spo2Els.forEach((el) => {
+          el.textContent = currentSpo2;
+        });
+        bpmEls.forEach((el) => {
+          el.textContent = currentBpm;
+        });
+      }, 1900);
+    }
+
+    // 3. Power Supply Live Decimal Flickering (12.0V <-> 11.9V)
+    const voltageEls = document.querySelectorAll('.js-flicker-voltage');
+    if (voltageEls.length > 0) {
+      const voltValues = [
+        'V-OUT: 12.0V',
+        'V-OUT: 12.0V',
+        'V-OUT: 11.9V',
+        'V-OUT: 12.0V',
+        'V-OUT: 12.1V',
+        'V-OUT: 11.9V',
+        'V-OUT: 12.0V'
+      ];
+      let voltIdx = 0;
+
+      setInterval(() => {
+        voltIdx = (voltIdx + 1) % voltValues.length;
+        const currentV = voltValues[voltIdx];
+        voltageEls.forEach((el) => {
+          el.textContent = currentV;
+        });
+      }, 1100);
+    }
+
+    // 4. Spirometer Telemetry Volume Fluctuation
+    const volEls = document.querySelectorAll('.js-fluctuate-vol');
+    if (volEls.length > 0) {
+      const volValues = ['VOL: 1200mL', 'VOL: 1220mL', 'VOL: 1190mL', 'VOL: 1250mL', 'VOL: 1180mL'];
+      let volIdx = 0;
+
+      setInterval(() => {
+        volIdx = (volIdx + 1) % volValues.length;
+        volEls.forEach((el) => {
+          el.textContent = volValues[volIdx];
+        });
+      }, 2300);
+    }
+
+    // 5. Basic Electronics Digital Multimeter Live Fluctuation
+    const dmmVoltEls = document.querySelectorAll('.js-dmm-volt');
+    const dmmFreqEls = document.querySelectorAll('.js-dmm-freq');
+    if (dmmVoltEls.length > 0 || dmmFreqEls.length > 0) {
+      const dmmVolts = ['5.02 V', '5.01 V', '5.03 V', '5.00 V', '4.99 V', '5.02 V'];
+      const dmmFreqs = ['1.002 kHz', '1.001 kHz', '1.003 kHz', '1.000 kHz', '1.002 kHz'];
+      let dmmIdx = 0;
+
+      setInterval(() => {
+        dmmIdx = (dmmIdx + 1) % dmmVolts.length;
+        dmmVoltEls.forEach((el) => {
+          el.textContent = dmmVolts[dmmIdx];
+        });
+        dmmFreqEls.forEach((el) => {
+          el.textContent = dmmFreqs[dmmIdx % dmmFreqs.length];
+        });
+      }, 1250);
+    }
+
+    // 6. Microsoft Office Cascading Spreadsheet Rapid Binary & Numeric Cycling
+    const sheetBinEls = document.querySelectorAll(
+      '.js-cell-bin1, .js-cell-bin2, .js-cell-bin3, .js-cell-bin4, .js-cell-bin5, .js-cell-bin6'
+    );
+    const sheetNumEls = document.querySelectorAll(
+      '.js-cell-num1, .js-cell-num4, .js-cell-num7, .js-cell-num10, .js-cell-num13, .js-cell-num16'
+    );
+
+    if (sheetBinEls.length > 0) {
+      const binaryPool = [
+        '01101001', '11000011', '00110110', '10101100', '11110000', '01010110',
+        '10011001', '11100100', '00011101', '01110010', '10110111', '11011000'
+      ];
+      let binOffset = 0;
+
+      setInterval(() => {
+        binOffset = (binOffset + 1) % binaryPool.length;
+        sheetBinEls.forEach((el, i) => {
+          el.textContent = binaryPool[(binOffset + i) % binaryPool.length];
+        });
+      }, 450);
+    }
+
+    if (sheetNumEls.length > 0) {
+      const numFluctuations = [
+        ['12.04', '05.01', '03.32', '01.80', '00.99', '24.00'],
+        ['12.06', '05.03', '03.30', '01.82', '01.02', '24.05'],
+        ['11.98', '04.98', '03.35', '01.79', '00.97', '23.95'],
+        ['12.01', '05.00', '03.31', '01.81', '01.00', '24.02']
+      ];
+      let numIdx = 0;
+
+      setInterval(() => {
+        numIdx = (numIdx + 1) % numFluctuations.length;
+        const currentNums = numFluctuations[numIdx];
+        sheetNumEls.forEach((el, i) => {
+          if (currentNums[i]) el.textContent = currentNums[i];
+        });
+      }, 700);
+    }
+  }
+
+  // Initialize project card live animations
+  initProjectCardAnimations();
 })();
 

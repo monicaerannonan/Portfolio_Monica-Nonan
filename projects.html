@@ -28,6 +28,13 @@
          and '— VIEW ALL GITHUB REPOSITORIES' footer link.
          ====================================================================== -->
     <section class="projects-section" id="projects" aria-labelledby="projectsSectionLabel">
+      <!-- Animated Living Abstract Dark Green & Gold Fluid Texture Background -->
+      <div class="projects-bg-wrapper" aria-hidden="true">
+        <div class="projects-fluid-bg"></div>
+        <div class="projects-fluid-gold-glow"></div>
+        <div class="projects-bg-overlay"></div>
+      </div>
+
       <div class="container">
         <span class="section-eyebrow" id="projectsSectionLabel">02 // SELECTED ARCHITECTURE &amp; SYSTEMS</span>
 
@@ -42,52 +49,77 @@
           >
             <div class="project-thumbnail">
               <span class="project-tag-corner">WEB // E-COMMERCE</span>
-              <!-- Technical Flowchart & Web Application Wireframe Diagram -->
+              <!-- Technical Flowchart & Web Application Wireframe Diagram with Live Flow -->
               <svg class="project-diagram-svg" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+
                 <!-- Subtle Blueprint Grid -->
                 <line x1="20" y1="45" x2="380" y2="45" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
                 <line x1="20" y1="120" x2="380" y2="120" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
                 <line x1="20" y1="195" x2="380" y2="195" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
 
-                <!-- Web App Browser Wireframe (Left) -->
-                <rect x="24" y="34" width="142" height="114" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.5"/>
+                <!-- Web App Browser Wireframe (User / Client Node) -->
+                <rect class="dash-pulse-node dash-node-browser" x="24" y="34" width="142" height="114" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.5"/>
                 <line x1="24" y1="52" x2="166" y2="52" stroke="rgba(255,255,255,0.55)" stroke-width="1.2"/>
-                <circle cx="34" cy="43" r="2.2" fill="#ffffff"/>
+                <circle cx="34" cy="43" r="2.2" fill="#7ed9a6" class="dash-blinking-dot"/>
                 <circle cx="42" cy="43" r="2.2" fill="rgba(255,255,255,0.45)"/>
                 <circle cx="50" cy="43" r="2.2" fill="rgba(255,255,255,0.45)"/>
-                <text x="98" y="46" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">PALENGKE.COM // UI</text>
+                <text x="98" y="46" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">USER // CLIENT UI</text>
 
                 <!-- Wireframe Hero & Product Grid Inside Browser -->
                 <rect x="34" y="60" width="122" height="24" rx="1" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
                 <text x="95" y="75" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">AGRI-FISHERY CATALOG</text>
-                <rect x="34" y="92" width="36" height="44" rx="1" fill="#0f131b" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
-                <rect x="77" y="92" width="36" height="44" rx="1" fill="#0f131b" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
-                <rect x="120" y="92" width="36" height="44" rx="1" fill="#0f131b" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
+                <rect class="dash-catalog-box dash-catalog-box--1" x="34" y="92" width="36" height="44" rx="1" fill="#0f3021" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
+                <rect class="dash-catalog-box dash-catalog-box--2" x="77" y="92" width="36" height="44" rx="1" fill="#0f3021" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
+                <rect class="dash-catalog-box dash-catalog-box--3" x="120" y="92" width="36" height="44" rx="1" fill="#0f3021" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
 
-                <!-- E-Commerce Flowchart Nodes (Right) -->
-                <rect x="210" y="34" width="164" height="34" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.4"/>
-                <text x="292" y="50" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle">FARM &amp; FISHERY PRODUCERS</text>
-                <text x="292" y="61" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">DIRECT INVENTORY INGEST</text>
+                <!-- E-Commerce Flowchart Nodes (Market / API & Database) -->
+                <!-- Node 1: Producer Ingest -->
+                <rect class="dash-pulse-node dash-node-producer" x="210" y="34" width="164" height="34" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.4"/>
+                <text x="292" y="50" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle">MARKET // PRODUCER API</text>
+                <text x="292" y="61" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">DIRECT INVENTORY INGEST</text>
 
-                <rect x="210" y="94" width="164" height="36" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.5"/>
-                <text x="292" y="110" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8.2" text-anchor="middle">CART &amp; ORDER ENGINE</text>
-                <text x="292" y="122" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">PRICING // CHECKOUT FLOW</text>
+                <!-- Node 2: Cart & Order Engine -->
+                <rect class="dash-pulse-node dash-node-cart" x="210" y="94" width="164" height="36" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.5"/>
+                <text x="292" y="110" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8.2" text-anchor="middle">ORDER &amp; CART ENGINE</text>
+                <text x="292" y="122" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">PRICING // CHECKOUT FLOW</text>
 
-                <rect x="210" y="156" width="164" height="34" rx="2" fill="#0c0f15" stroke="rgba(255,255,255,0.65)" stroke-width="1.3"/>
-                <text x="292" y="172" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle">LOCAL CONSUMER DISPATCH</text>
-                <text x="292" y="183" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">FARM-TO-TABLE FULFILLMENT</text>
+                <!-- Node 3: Local Consumer Dispatch / Database -->
+                <rect class="dash-pulse-node dash-node-database" x="210" y="156" width="164" height="34" rx="2" fill="#092116" stroke="rgba(255,255,255,0.65)" stroke-width="1.3"/>
+                <text x="292" y="172" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle">DATABASE // FULFILLMENT</text>
+                <text x="292" y="183" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">LOCAL DISPATCH &amp; STORAGE</text>
 
-                <!-- Flowchart Arrows -->
+                <!-- Flowchart Connecting Lines with Pulsing Data Streams -->
+                <!-- Horizontal Bus (Client -> Cart Engine) -->
                 <line x1="166" y1="112" x2="210" y2="112" stroke="#ffffff" stroke-width="1.5"/>
-                <polygon points="210,112 204,108 204,116" fill="#ffffff"/>
+                <line class="data-stream-line" x1="166" y1="112" x2="210" y2="112" stroke="#7ed9a6" stroke-width="2" stroke-dasharray="4 4"/>
+                <polygon points="210,112 204,108 204,116" fill="#7ed9a6"/>
+
+                <!-- Vertical Bus 1 (Producer -> Cart Engine) -->
                 <line x1="292" y1="68" x2="292" y2="94" stroke="#ffffff" stroke-width="1.4"/>
-                <polygon points="292,94 288,88 296,88" fill="#ffffff"/>
+                <line class="data-stream-line" x1="292" y1="68" x2="292" y2="94" stroke="#7ed9a6" stroke-width="2" stroke-dasharray="4 4"/>
+                <polygon points="292,94 288,88 296,88" fill="#7ed9a6"/>
+
+                <!-- Vertical Bus 2 (Cart Engine -> Database) -->
                 <line x1="292" y1="130" x2="292" y2="156" stroke="#ffffff" stroke-width="1.4"/>
-                <polygon points="292,156 288,150 296,150" fill="#ffffff"/>
+                <line class="data-stream-line" x1="292" y1="130" x2="292" y2="156" stroke="#7ed9a6" stroke-width="2" stroke-dasharray="4 4"/>
+                <polygon points="292,156 288,150 296,150" fill="#7ed9a6"/>
+
+                <!-- Moving Glowing Data Packets -->
+                <circle class="dash-packet dash-packet-h1" r="3.5" fill="#7ed9a6" filter="url(#glowGreen)"/>
+                <circle class="dash-packet dash-packet-h2" r="2.5" fill="#ffffff"/>
+                <circle class="dash-packet dash-packet-v1" r="3.5" fill="#7ed9a6" filter="url(#glowGreen)"/>
+                <circle class="dash-packet dash-packet-v2" r="3.5" fill="#ffffff" filter="url(#glowGreen)"/>
 
                 <!-- Bottom Status Bar -->
                 <path d="M24 173 H166" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
-                <text x="24" y="188" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7.5">ARCH: WEB-MARKETPLACE // HTTP</text>
+                <text x="24" y="188" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7.5">ARCH: WEB-MARKETPLACE // HTTP</text>
+                <circle cx="160" cy="186" r="2.5" fill="#7ed9a6" class="dash-blinking-dot"/>
               </svg>
             </div>
             <h2 class="project-title">PALENGKE.COM</h2>
@@ -106,49 +138,84 @@
               <span class="project-tag-corner">MCU // ARDUINO</span>
               <!-- Clean Dark-Themed Schematic of a Microcontroller & Pulse Oximetry Circuit -->
               <svg class="project-diagram-svg" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Optical Sensor Module MAX30100/MAX30102 (Left) -->
-                <rect x="24" y="48" width="96" height="86" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.5"/>
-                <text x="72" y="68" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="bold" text-anchor="middle">MAX30102</text>
-                <text x="72" y="80" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">OPTICAL SpO2 IC</text>
-                <!-- Photodiode & Red/IR LED Symbols -->
-                <circle cx="54" cy="106" r="10" stroke="rgba(255,255,255,0.75)" stroke-width="1.2"/>
-                <text x="54" y="109" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="6.5" text-anchor="middle">RED</text>
-                <circle cx="90" cy="106" r="10" stroke="rgba(255,255,255,0.75)" stroke-width="1.2"/>
-                <text x="90" y="109" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="6.5" text-anchor="middle">IR</text>
+                <defs>
+                  <clipPath id="ppgScreenClip">
+                    <rect x="24" y="152" width="354" height="66" rx="2" />
+                  </clipPath>
+                  <clipPath id="oledWaveClip">
+                    <rect x="310" y="106" width="64" height="18" rx="1" />
+                  </clipPath>
+                </defs>
 
-                <!-- I2C Bus Lines (SDA / SCL / INT / +3.3V) with Pull-up Resistors -->
+                <!-- Optical Sensor Module MAX30100/MAX30102 (Left) -->
+                <rect x="24" y="48" width="96" height="86" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.5"/>
+                <!-- Blinking 'SENSOR ACTIVE' Indicator Dot -->
+                <circle class="sensor-active-dot" cx="35" cy="58" r="2.6" fill="#7ed9a6"/>
+                <text x="42" y="60" fill="#7ed9a6" font-family="JetBrains Mono, monospace" font-size="5.8" font-weight="bold">SENSOR ACTIVE</text>
+                
+                <text x="72" y="73" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="bold" text-anchor="middle">MAX30102</text>
+                <text x="72" y="83" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">OPTICAL SpO2 IC</text>
+                <!-- Photodiode & Red/IR LED Symbols with Pulsing Emittance -->
+                <circle cx="54" cy="106" r="10" stroke="rgba(255,255,255,0.75)" stroke-width="1.2"/>
+                <circle class="sensor-led-pulse sensor-led-pulse--red" cx="54" cy="106" r="4" fill="#ff5555"/>
+                <text x="54" y="121" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle">RED</text>
+                <circle cx="90" cy="106" r="10" stroke="rgba(255,255,255,0.75)" stroke-width="1.2"/>
+                <circle class="sensor-led-pulse sensor-led-pulse--ir" cx="90" cy="106" r="4" fill="#7ed9a6"/>
+                <text x="90" y="121" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6" text-anchor="middle">IR</text>
+
+                <!-- I2C Bus Lines (SDA / SCL / INT / +3.3V) with Moving Packet Pulses -->
                 <line x1="120" y1="68" x2="174" y2="68" stroke="#ffffff" stroke-width="1.4"/>
+                <line class="data-stream-line" x1="120" y1="68" x2="174" y2="68" stroke="#7ed9a6" stroke-width="1.6" stroke-dasharray="3 3"/>
                 <line x1="120" y1="90" x2="174" y2="90" stroke="#ffffff" stroke-width="1.4"/>
+                <line class="data-stream-line" x1="120" y1="90" x2="174" y2="90" stroke="#7ed9a6" stroke-width="1.6" stroke-dasharray="3 3"/>
                 <line x1="120" y1="112" x2="174" y2="112" stroke="rgba(255,255,255,0.55)" stroke-width="1.2" stroke-dasharray="3 3"/>
                 <text x="147" y="63" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">SCL</text>
                 <text x="147" y="85" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">SDA</text>
-                <text x="147" y="107" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">INT</text>
+                <text x="147" y="107" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">INT</text>
 
                 <!-- Pull-up Resistor Symbols to VCC -->
-                <rect x="136" y="34" width="6" height="14" stroke="rgba(255,255,255,0.65)" stroke-width="1" fill="#0c0f15"/>
+                <rect x="136" y="34" width="6" height="14" stroke="rgba(255,255,255,0.65)" stroke-width="1" fill="#092116"/>
                 <line x1="139" y1="48" x2="139" y2="68" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-                <rect x="152" y="34" width="6" height="14" stroke="rgba(255,255,255,0.65)" stroke-width="1" fill="#0c0f15"/>
+                <rect x="152" y="34" width="6" height="14" stroke="rgba(255,255,255,0.65)" stroke-width="1" fill="#092116"/>
                 <line x1="155" y1="48" x2="155" y2="90" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
-                <text x="147" y="29" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">+5V // 4.7k&Omega;</text>
+                <text x="147" y="29" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">+5V // 4.7k&Omega;</text>
 
                 <!-- Arduino ATmega328P Microcontroller Block (Center) -->
-                <rect x="174" y="42" width="108" height="98" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.7"/>
+                <rect class="dash-pulse-node dash-node-arduino" x="174" y="42" width="108" height="98" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.7"/>
                 <text x="228" y="66" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="9" font-weight="bold" text-anchor="middle">ARDUINO UNO</text>
-                <text x="228" y="80" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">ATmega328P // 16MHz</text>
+                <text x="228" y="80" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">ATmega328P // 16MHz</text>
                 <line x1="186" y1="92" x2="270" y2="92" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
                 <text x="228" y="108" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">A4:SDA   A5:SCL</text>
-                <text x="228" y="122" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">DSP FILTER &amp; BPM</text>
+                <text x="228" y="122" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">DSP FILTER &amp; BPM</text>
 
-                <!-- OLED Readout Module (Right) -->
+                <!-- OLED Readout Module (Right) with Live Oxygen Percentage -->
                 <line x1="282" y1="90" x2="306" y2="90" stroke="#ffffff" stroke-width="1.4"/>
-                <rect x="306" y="54" width="72" height="74" rx="2" fill="#0c0f15" stroke="rgba(255,255,255,0.8)" stroke-width="1.4"/>
-                <text x="342" y="73" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">OLED 128x64</text>
-                <text x="342" y="93" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SpO2: 98%</text>
-                <text x="342" y="111" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8.5" text-anchor="middle">76 BPM</text>
+                <rect class="dash-pulse-node" x="306" y="54" width="72" height="74" rx="2" fill="#092116" stroke="rgba(255,255,255,0.8)" stroke-width="1.4"/>
+                <text x="342" y="68" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.5" text-anchor="middle">OLED 128x64</text>
+                
+                <!-- Fluctuating Oxygen Percentage Numbers -->
+                <text class="live-spo2-val js-fluctuate-spo2" x="342" y="84" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="bold" text-anchor="middle">SpO2: 98%</text>
+                <text class="live-bpm-val js-fluctuate-bpm" x="342" y="98" fill="#7ed9a6" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="middle">76 BPM</text>
 
-                <!-- Photoplethysmogram (PPG) Pulse Waveform Trace at Bottom -->
-                <line x1="24" y1="196" x2="378" y2="196" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-                <path d="M24 196 L65 196 L78 184 L88 202 L100 156 L112 206 L124 178 L136 196 L195 196 L208 184 L218 202 L230 156 L242 206 L254 178 L266 196 L325 196 L338 184 L348 202 L360 156 L372 196" stroke="#ffffff" stroke-width="1.7" fill="none"/>
+                <!-- Mini waveform inside OLED screen -->
+                <g clip-path="url(#oledWaveClip)">
+                  <path class="anim-oled-mini-wave" d="M308 116 L316 116 L320 110 L323 120 L327 108 L331 122 L335 116 L345 116 L349 110 L352 120 L356 108 L360 122 L364 116 L374 116 L378 110 L381 120 L385 108 L389 122 L393 116 L403 116" stroke="#7ed9a6" stroke-width="1.2" fill="none"/>
+                </g>
+
+                <!-- Photoplethysmogram (PPG) Digital Display Screen Area (Bottom) -->
+                <rect x="24" y="152" width="354" height="66" rx="2" fill="rgba(6,20,13,0.75)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                <line x1="24" y1="185" x2="378" y2="185" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3 3"/>
+                <text x="32" y="165" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.5">PPG SIGNAL CHANNEL 1 // 100Hz ADC</text>
+                <text x="368" y="165" fill="#7ed9a6" font-family="JetBrains Mono, monospace" font-size="6.5" text-anchor="end">LIVE STREAM</text>
+
+                <!-- Continuous, Scrolling Heartbeat Pulse Wave (PPG Signal) -->
+                <g clip-path="url(#ppgScreenClip)">
+                  <g class="anim-ppg-scroller">
+                    <!-- Heartbeat pulse waveform repeated seamlessly across 700px width -->
+                    <path d="M0,185 L50,185 L60,173 L68,191 L78,142 L88,197 L98,168 L108,185 L180,185 L190,173 L198,191 L208,142 L218,197 L228,168 L238,185 L310,185 L320,173 L328,191 L338,142 L348,197 L358,168 L368,185 L440,185 L450,173 L458,191 L468,142 L478,197 L488,168 L498,185 L570,185 L580,173 L588,191 L598,142 L608,197 L618,168 L628,185 L700,185" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+                    <path d="M0,185 L50,185 L60,173 L68,191 L78,142 L88,197 L98,168 L108,185 L180,185 L190,173 L198,191 L208,142 L218,197 L228,168 L238,185 L310,185 L320,173 L328,191 L338,142 L348,197 L358,168 L368,185 L440,185 L450,173 L458,191 L468,142 L478,197 L488,168 L498,185 L570,185 L580,173 L588,191 L598,142 L608,197 L618,168 L628,185 L700,185" stroke="#7ed9a6" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+                  </g>
+                </g>
               </svg>
             </div>
             <h2 class="project-title">SPO2 USING ARDUINO</h2>
@@ -167,45 +234,71 @@
               <span class="project-tag-corner">IOT // ESP-32</span>
               <!-- System Architecture Diagram: 3-Ball Spirometer & ESP-32 Telemetry -->
               <svg class="project-diagram-svg" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <!-- Left: 3-Chamber Incentive Spirometer Optical Column Array -->
-                <rect x="24" y="42" width="96" height="148" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.5"/>
-                <text x="72" y="58" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">3-BALL CHAMBERS</text>
-                <!-- 3 Vertical Airway Columns with Floating Balls -->
-                <rect x="38" y="68" width="16" height="96" rx="1" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
-                <circle cx="46" cy="92" r="5.5" fill="#ffffff"/>
-                <rect x="64" y="68" width="16" height="96" rx="1" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
-                <circle cx="72" cy="112" r="5.5" fill="#ffffff"/>
-                <rect x="90" y="68" width="16" height="96" rx="1" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
-                <circle cx="98" cy="136" r="5.5" fill="rgba(255,255,255,0.75)"/>
-                <text x="72" y="180" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">600 / 900 / 1200 cc</text>
+                <defs>
+                  <clipPath id="cloudGraphClip">
+                    <rect x="308" y="90" width="66" height="52" rx="1" />
+                  </clipPath>
+                </defs>
 
-                <!-- Sensor Bus Arrows to ESP-32 -->
+                <!-- Left: 3-Chamber Incentive Spirometer Optical Column Array -->
+                <rect class="dash-pulse-node" x="24" y="42" width="96" height="148" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.5"/>
+                <text x="72" y="58" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">3-BALL CHAMBERS</text>
+                
+                <!-- 3 Vertical Airway Columns with Dynamically Floating Balls -->
+                <rect x="38" y="68" width="16" height="96" rx="1" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+                <circle class="spirometer-ball spirometer-ball-1" cx="46" cy="92" r="5.5" fill="#ffffff" filter="url(#glowGreen)"/>
+                
+                <rect x="64" y="68" width="16" height="96" rx="1" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+                <circle class="spirometer-ball spirometer-ball-2" cx="72" cy="112" r="5.5" fill="#ffffff" filter="url(#glowGreen)"/>
+                
+                <rect x="90" y="68" width="16" height="96" rx="1" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+                <circle class="spirometer-ball spirometer-ball-3" cx="98" cy="136" r="5.5" fill="#7ed9a6" filter="url(#glowGreen)"/>
+                
+                <text x="72" y="180" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">600 / 900 / 1200 cc</text>
+
+                <!-- Sensor Bus Moving Dashed Lines for Data Transfer to ESP-32 -->
                 <line x1="120" y1="92" x2="156" y2="92" stroke="#ffffff" stroke-width="1.4"/>
+                <line class="data-stream-line stream-fast-1" x1="120" y1="92" x2="156" y2="92" stroke="#7ed9a6" stroke-width="1.8" stroke-dasharray="4 3"/>
+                
                 <line x1="120" y1="116" x2="156" y2="116" stroke="#ffffff" stroke-width="1.4"/>
+                <line class="data-stream-line stream-fast-2" x1="120" y1="116" x2="156" y2="116" stroke="#7ed9a6" stroke-width="1.8" stroke-dasharray="4 3"/>
+                
                 <line x1="120" y1="140" x2="156" y2="140" stroke="#ffffff" stroke-width="1.4"/>
+                <line class="data-stream-line stream-fast-3" x1="120" y1="140" x2="156" y2="140" stroke="#7ed9a6" stroke-width="1.8" stroke-dasharray="4 3"/>
 
                 <!-- Center: ESP-32 Microcontroller & Wi-Fi Telemetry Engine -->
-                <rect x="156" y="58" width="104" height="116" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.7"/>
+                <rect class="dash-pulse-node dash-node-esp" x="156" y="58" width="104" height="116" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.7"/>
                 <rect x="174" y="48" width="68" height="10" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.1"/>
                 <text x="208" y="84" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="bold" text-anchor="middle">ESP-32</text>
-                <text x="208" y="98" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">2.4GHz WI-FI + BLE</text>
+                <text x="208" y="98" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">2.4GHz WI-FI + BLE</text>
                 <line x1="168" y1="110" x2="248" y2="110" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
                 <text x="208" y="126" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">ADC FLOW CALC</text>
-                <text x="208" y="140" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">JSON TELEMETRY</text>
-                <!-- Wireless RF Waves -->
-                <path d="M268 98 C275 106, 275 126, 268 134" stroke="#ffffff" stroke-width="1.3" fill="none"/>
-                <path d="M275 92 C285 104, 285 128, 275 140" stroke="rgba(255,255,255,0.65)" stroke-width="1.3" fill="none"/>
+                <text x="208" y="140" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">JSON TELEMETRY</text>
+
+                <!-- Sequential Wi-Fi Transmission Waves -->
+                <g class="wifi-transmission-group">
+                  <path class="wifi-wave wifi-wave-1" d="M268 98 C275 106, 275 126, 268 134" stroke="#ffffff" stroke-width="1.4" fill="none"/>
+                  <path class="wifi-wave wifi-wave-2" d="M275 92 C285 104, 285 128, 275 140" stroke="#7ed9a6" stroke-width="1.5" fill="none"/>
+                  <path class="wifi-wave wifi-wave-3" d="M282 86 C295 102, 295 130, 282 146" stroke="#cce9d6" stroke-width="1.5" fill="none"/>
+                </g>
 
                 <!-- Right: Cloud Telemetry & Respiratory Analytics Node -->
-                <line x1="286" y1="116" x2="304" y2="116" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="3 3"/>
-                <rect x="304" y="48" width="74" height="136" rx="2" fill="#0c0f15" stroke="#ffffff" stroke-width="1.5"/>
+                <line x1="286" y1="116" x2="304" y2="116" stroke="#ffffff" stroke-width="1.4"/>
+                <line class="data-stream-line stream-cloud" x1="286" y1="116" x2="304" y2="116" stroke="#7ed9a6" stroke-width="2" stroke-dasharray="3 3"/>
+                
+                <rect class="dash-pulse-node" x="304" y="48" width="74" height="136" rx="2" fill="#092116" stroke="#ffffff" stroke-width="1.5"/>
                 <text x="341" y="68" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.8" text-anchor="middle">IOT CLOUD</text>
-                <text x="341" y="80" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">MQTT / HTTPS</text>
-                <!-- Mini Telemetry Graph Inside Cloud Node -->
-                <polyline points="314,132 326,118 336,124 348,98 360,106 368,92" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+                <text x="341" y="80" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">MQTT / HTTPS</text>
+                
+                <!-- Continuously Scrolling Line Graph in Cloud Module -->
+                <g clip-path="url(#cloudGraphClip)">
+                  <g class="anim-cloud-telemetry">
+                    <path d="M308 126 L318 114 L328 120 L338 98 L348 106 L356 94 L366 118 L374 126 L384 114 L394 120 L404 98 L414 106 L422 94 L432 118 L440 126 L450 114 L460 120 L470 98" stroke="#7ed9a6" stroke-width="1.6" fill="none"/>
+                  </g>
+                </g>
                 <line x1="314" y1="140" x2="368" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
-                <text x="341" y="160" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">VOL: 1200mL</text>
-                <text x="341" y="172" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="6.5" text-anchor="middle">LIVE STREAM</text>
+                <text class="live-vol-val js-fluctuate-vol" x="341" y="160" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">VOL: 1200mL</text>
+                <text x="341" y="172" fill="#7ed9a6" font-family="JetBrains Mono, monospace" font-size="6.5" text-anchor="middle">LIVE STREAM</text>
               </svg>
             </div>
             <h2 class="project-title">3-BALL SPIROMETER</h2>
@@ -228,6 +321,39 @@
                 class="project-photo-img"
                 loading="lazy"
               />
+
+              <!-- Live Heads-Up Display (HUD) Scanning Overlay -->
+              <div class="hud-hardware-overlay" aria-hidden="true">
+                <!-- Animated Horizontal Scanning Line Sweeping Up & Down -->
+                <div class="hud-scan-line"></div>
+
+                <!-- Corner HUD Brackets -->
+                <span class="hud-reticle hud-reticle--tl"></span>
+                <span class="hud-reticle hud-reticle--tr"></span>
+                <span class="hud-reticle hud-reticle--bl"></span>
+                <span class="hud-reticle hud-reticle--br"></span>
+
+                <!-- Live Status & Voltage Readout HUD Corner Banner -->
+                <div class="hud-telemetry-corner">
+                  <div class="hud-telemetry-header">
+                    <span class="live-dot"></span>
+                    <span class="hud-telemetry-label">REGULATED DC RAIL</span>
+                  </div>
+                  <!-- Glowing Text Overlay with Decimal Flickering (12.0V to 11.9V) -->
+                  <div class="hud-voltage-val">
+                    <strong class="js-flicker-voltage">V-OUT: 12.0V</strong>
+                  </div>
+                  <div class="hud-telemetry-sub">
+                    <span>LOAD: 1.25A // RIPPLE &lt;15mV</span>
+                  </div>
+                </div>
+
+                <!-- Bottom Telemetry Badges -->
+                <div class="hud-status-chip">
+                  <span>INPUT: 220V AC / 60Hz</span>
+                  <span>STATUS: NOMINAL</span>
+                </div>
+              </div>
             </div>
             <h2 class="project-title">POWER SUPPLY 220V AC TO 12V DC</h2>
             <p class="project-subcategory">Custom Hardware Enclosure, Transformer &amp; PCB Build</p>
@@ -249,40 +375,59 @@
                 class="project-photo-img project-photo-img--dimmed"
                 loading="lazy"
               />
-              <!-- Clean Technical 7-Segment & Breadboard Logic Schematic Overlay -->
+              <!-- Clean Technical 7-Segment & Breadboard Logic Schematic Overlay with Live Counter -->
               <svg class="project-diagram-svg project-diagram-svg--overlay" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <!-- BCD Decoder IC Block -->
-                <rect x="34" y="54" width="116" height="132" rx="2" fill="rgba(10,12,17,0.88)" stroke="#ffffff" stroke-width="1.5"/>
+                <rect class="dash-pulse-node" x="34" y="54" width="116" height="132" rx="2" fill="rgba(9,33,22,0.92)" stroke="#ffffff" stroke-width="1.5"/>
                 <text x="92" y="78" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="8.5" font-weight="bold" text-anchor="middle">74LS47 // LOGIC</text>
-                <text x="92" y="92" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">BCD TO 7-SEGMENT</text>
-                <text x="54" y="116" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A0 ──►</text>
-                <text x="54" y="134" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A1 ──►</text>
-                <text x="54" y="152" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A2 ──►</text>
-                <text x="54" y="170" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A3 ──►</text>
+                <text x="92" y="92" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">BCD TO 7-SEGMENT</text>
+                
+                <!-- BCD Inputs (A0 - A3) with Live Binary Pulses -->
+                <text id="bcdBitA0" class="bcd-input-pin" x="54" y="116" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A0 ──►</text>
+                <text id="bcdBitA1" class="bcd-input-pin" x="54" y="134" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A1 ──►</text>
+                <text id="bcdBitA2" class="bcd-input-pin" x="54" y="152" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A2 ──►</text>
+                <text id="bcdBitA3" class="bcd-input-pin" x="54" y="170" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5">A3 ──►</text>
 
-                <!-- 7-Segment Lines (a - g) with 330 ohm resistor bus -->
-                <line x1="150" y1="72" x2="238" y2="72" stroke="#ffffff" stroke-width="1.3"/>
-                <line x1="150" y1="88" x2="238" y2="88" stroke="#ffffff" stroke-width="1.3"/>
-                <line x1="150" y1="104" x2="238" y2="104" stroke="#ffffff" stroke-width="1.3"/>
-                <line x1="150" y1="120" x2="238" y2="120" stroke="#ffffff" stroke-width="1.3"/>
-                <line x1="150" y1="136" x2="238" y2="136" stroke="#ffffff" stroke-width="1.3"/>
-                <line x1="150" y1="152" x2="238" y2="152" stroke="#ffffff" stroke-width="1.3"/>
-                <line x1="150" y1="168" x2="238" y2="168" stroke="#ffffff" stroke-width="1.3"/>
-                <text x="194" y="64" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">a b c d e f g (330&Omega;)</text>
+                <!-- 7-Segment Lines (a - g) with Animated Bus Streams -->
+                <line id="segBusLine_a" class="seg-bus-line" x1="150" y1="72" x2="216" y2="72" stroke="#ffffff" stroke-width="1.3"/>
+                <line id="segBusLine_b" class="seg-bus-line" x1="150" y1="88" x2="216" y2="88" stroke="#ffffff" stroke-width="1.3"/>
+                <line id="segBusLine_c" class="seg-bus-line" x1="150" y1="104" x2="216" y2="104" stroke="#ffffff" stroke-width="1.3"/>
+                <line id="segBusLine_d" class="seg-bus-line" x1="150" y1="120" x2="216" y2="120" stroke="#ffffff" stroke-width="1.3"/>
+                <line id="segBusLine_e" class="seg-bus-line" x1="150" y1="136" x2="216" y2="136" stroke="#ffffff" stroke-width="1.3"/>
+                <line id="segBusLine_f" class="seg-bus-line" x1="150" y1="152" x2="216" y2="152" stroke="#ffffff" stroke-width="1.3"/>
+                <line id="segBusLine_g" class="seg-bus-line" x1="150" y1="168" x2="216" y2="168" stroke="#ffffff" stroke-width="1.3"/>
+                <text x="183" y="64" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">a-g (330&Omega;)</text>
 
-                <!-- 7-Segment Display Module on Breadboard (Right) -->
-                <rect x="238" y="42" width="128" height="156" rx="2" fill="rgba(8,10,14,0.92)" stroke="#ffffff" stroke-width="1.7"/>
-                <text x="302" y="60" fill="#a0a7b5" font-family="JetBrains Mono, monospace" font-size="7.2" text-anchor="middle">COMMON ANODE LED</text>
-                <!-- Glowing Digit '8' Segments -->
-                <rect x="278" y="72" width="44" height="7" rx="2" fill="#ffffff"/>
-                <rect x="317" y="79" width="7" height="36" rx="2" fill="#ffffff"/>
-                <rect x="317" y="121" width="7" height="36" rx="2" fill="#ffffff"/>
-                <rect x="278" y="155" width="44" height="7" rx="2" fill="#ffffff"/>
-                <rect x="276" y="121" width="7" height="36" rx="2" fill="rgba(255,255,255,0.2)"/>
-                <rect x="276" y="79" width="7" height="36" rx="2" fill="#ffffff"/>
-                <rect x="278" y="114" width="44" height="7" rx="2" fill="#ffffff"/>
-                <circle cx="334" cy="160" r="3.5" fill="#ffffff"/>
-                <text x="302" y="184" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">BREADBOARD NODE</text>
+                <!-- Dual 7-Segment Display Module on Breadboard (Tens & Ones Digits) -->
+                <rect class="dash-pulse-node" x="216" y="42" width="160" height="156" rx="2" fill="rgba(6,20,13,0.94)" stroke="#ffffff" stroke-width="1.7"/>
+                <text x="296" y="58" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="7" text-anchor="middle">DUAL 7-SEGMENT // LIVE COUNTER</text>
+
+                <!-- DIGIT 1 (Tens: x=228) -->
+                <g class="seven-seg-digit digit-tens" id="sevenSegTens">
+                  <rect id="tens_a" class="seg-bar seg-a" x="238" y="70" width="32" height="6" rx="1.5" fill="#ffffff" />
+                  <rect id="tens_b" class="seg-bar seg-b" x="267" y="76" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="tens_c" class="seg-bar seg-c" x="267" y="108" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="tens_d" class="seg-bar seg-d" x="238" y="134" width="32" height="6" rx="1.5" fill="#ffffff" />
+                  <rect id="tens_e" class="seg-bar seg-e" x="234" y="108" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="tens_f" class="seg-bar seg-f" x="234" y="76" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="tens_g" class="seg-bar seg-g" x="238" y="102" width="32" height="6" rx="1.5" fill="rgba(255,255,255,0.08)" />
+                </g>
+
+                <!-- DIGIT 2 (Ones: x=298) -->
+                <g class="seven-seg-digit digit-ones" id="sevenSegOnes">
+                  <rect id="ones_a" class="seg-bar seg-a" x="308" y="70" width="32" height="6" rx="1.5" fill="#ffffff" />
+                  <rect id="ones_b" class="seg-bar seg-b" x="337" y="76" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="ones_c" class="seg-bar seg-c" x="337" y="108" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="ones_d" class="seg-bar seg-d" x="308" y="134" width="32" height="6" rx="1.5" fill="#ffffff" />
+                  <rect id="ones_e" class="seg-bar seg-e" x="304" y="108" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="ones_f" class="seg-bar seg-f" x="304" y="76" width="6" height="28" rx="1.5" fill="#ffffff" />
+                  <rect id="ones_g" class="seg-bar seg-g" x="308" y="102" width="32" height="6" rx="1.5" fill="rgba(255,255,255,0.08)" />
+                  <circle class="seg-dp" cx="350" cy="138" r="3" fill="#7ed9a6"/>
+                </g>
+
+                <!-- Live Decimal Readout Footer Inside Module -->
+                <text class="live-counter-readout" x="296" y="162" fill="#ffffff" font-family="JetBrains Mono, monospace" font-size="7.5" text-anchor="middle">COUNT: <tspan id="liveCounterNumber" fill="#7ed9a6">00</tspan> / 99</text>
+                <text x="296" y="178" fill="#cce9d6" font-family="JetBrains Mono, monospace" font-size="6.8" text-anchor="middle">CLK: 1.6Hz // ACTIVE</text>
               </svg>
             </div>
             <h2 class="project-title">SEVEN SEGMENT DISPLAY</h2>
@@ -308,7 +453,7 @@
     <section class="cta-section" id="contact" aria-labelledby="ctaHeading">
       <div class="container">
         <div class="cta-content-center">
-          <span class="section-eyebrow">04 // INITIATE COLLABORATION</span>
+          <span class="section-eyebrow">05 // INITIATE COLLABORATION</span>
           <h2 class="cta-heading" id="ctaHeading">BUILD SOMETHING INNOVATIVE</h2>
           <p class="cta-subheading">
             Available for tech collaborations, software design, and engineering projects.
